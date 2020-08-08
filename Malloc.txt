@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int main()
+{
+
+int n,i,sum=0;
+int *ptr;
+
+printf("Enter Number of Elements \n");
+scanf("%d",&n);
+ptr=(int*)malloc(n*sizeof(int));
+if(ptr==NULL)
+{
+printf("Error! Memory Not Allocated");
+exit(0);
+}
+printf("Enter Elements of Array :\n");
+for(i=0;i<n;++i)
+{
+scanf("%d",ptr+i); 
+
+// Pointer Airthmetic as shown above (ptr + 1 will result in next available address NOT immediate next address)
+
+sum+=*(ptr+i); // 1003
+}
+printf("Sum = %d",sum);
+free(ptr);
+printf("\n Press Any Key To Exit !");
+return 0;
+}

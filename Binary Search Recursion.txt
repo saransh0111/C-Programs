@@ -1,0 +1,75 @@
+
+#include <stdio.h>
+void sort(int array[],int size )
+{
+    int i,j,temp;
+    for(i=0;i<size;i++)
+    {
+        for (j=i+1; j<size;j++)
+    { 
+        if (array[i]>array[j])
+    { 
+        temp = array[i];
+    array[i]=array[j];
+    array[j]=temp;
+    }
+    }
+    }
+    
+}
+    int Binarysearch(int array[], int left, int right, int search)
+{  
+    if(left > right)
+    {
+        return -1;
+        
+    }
+    int mid= (left+right)/2;
+    if (array[mid]==search)
+    {
+        return mid;
+
+    }
+    else if (search<array[mid])
+    {
+        return Binarysearch(array,left,mid-1,search);
+        
+    }
+    else 
+    {
+        
+        return Binarysearch(array,mid+1,right,search);
+        }
+    
+}
+int main() 
+{
+    int size, array[100], i, search, found;
+    printf("ENTER SIZE OF ARRAY");
+    scanf("%d",&size);
+    printf("ENTER %d ELEMENTS",size);
+    
+    for(i=0; i<size;i++)
+    {
+        scanf("%d",&array[i]);
+    }
+    sort(array,size);
+    printf("sorted array is ");
+    for(i=0;i<size;i++)
+    { 
+        printf("%d ",array[i] );
+        
+    }
+    printf("\n Enter item to be search : ");
+    scanf("%d",&search);
+    found=Binarysearch(array,0,size-1,search);
+if (found==-1)
+{
+    printf("\n element not found");
+    
+}
+else printf("\n %d found in pos %d at index no. %d",search,found+1,found);
+return 0;
+    
+}
+   

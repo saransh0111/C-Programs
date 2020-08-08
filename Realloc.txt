@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>     
+int main()
+{
+    int *ptr;
+    int i, sum=0, newsum=0;
+    
+    ptr= (int *)calloc(4,sizeof(int));  
+      
+    if(ptr!=NULL)
+    {
+        for(i=0;i<4;i++)
+        {
+                printf("Enter number at Array Index [%d]: ", i);
+                scanf("%d",(ptr+i));
+                sum+=*(ptr+i); 
+                }
+    }
+        printf("\nSum of Stored elements = %d \n",sum);
+    
+       //reallocation of 6 elements
+        ptr= (int *)realloc(ptr,6*sizeof(int)); 
+        if(ptr!=NULL)
+        {
+                printf("\n\t\t\t\t\tCongratulations !! New Memories Are Succesfully Allocated to Previous Array!\n\n\n");
+                for(i=4;i<6;i++)
+                {
+                        printf("Enter new number at Array Index [%d] : ",i);
+                        scanf("%d",(ptr+i));
+                        newsum+=*(ptr+i);
+                }
+        }
+                sum=sum+newsum;
+        
+        printf("\n\nThe Numbers in Updated Array are:\n");
+        for(i=0;i<6;i++)
+        {
+                printf("%d \n",ptr[i]);
+        }
+        
+        printf("\nThe New Sum of Stored elements = %d \n",sum);
+        
+        free(ptr);
+       return 0;
+}
